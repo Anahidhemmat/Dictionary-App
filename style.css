@@ -7,3 +7,64 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #adffb4;
+}
+.wrapper {
+  background: #fff;
+  width: 450px;
+  border-radius: 7px;
+  padding: 28px 28px 45px;
+}
+.wrapper header {
+  font-size: 28px;
+  font-weight: 400;
+  text-align: center;
+}
+.wrapper .search {
+  position: relative;
+  margin: 35px 0 18px;
+}
+.search input {
+  height: 54px;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #999;
+  padding: 0 42px;
+  font-size: 16px;
+}
+.search input::placeholder {
+  color: #b8b8b8;
+}
+.search input:focus {
+  padding: 0 41px;
+  border: 2px solid #adffb4;
+}
+.search :where(i, span) {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+.search i {
+  left: 18px;
+  font-size: 16px;
+  pointer-events: none;
+}
+.search input:focus ~ i {
+  color: #9af8a2;
+}
+.search span {
+  right: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  display: none;
+}
+.search input:valid ~ span {
+  display: block;
+}
