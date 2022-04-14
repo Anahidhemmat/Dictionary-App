@@ -20,11 +20,14 @@ body {
   border-radius: 7px;
   padding: 28px 28px 45px;
 }
+/* ----------title--------- */
 .wrapper header {
   font-size: 28px;
   font-weight: 400;
   text-align: center;
 }
+
+/* ---------search input---------- */
 .wrapper .search {
   position: relative;
   margin: 35px 0 18px;
@@ -67,4 +70,61 @@ body {
 }
 .search input:valid ~ span {
   display: block;
+}
+.wrapper .info-text {
+  font-size: 13px;
+  color: #9a9a9a;
+  margin: -3px 0 -10px;
+  margin-bottom: 10px;
+}
+.wrapper ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #ccc;
+}
+ul li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+/* ----------Details----------- */
+.wrapper ul {
+  display: none;
+}
+ul .word p {
+  font-size: 22px;
+}
+ul .word span {
+  font-size: 12px;
+  color: #989898;
+}
+ul .word i {
+  color: #999;
+  font-size: 15px;
+  cursor: pointer;
+}
+.content li .details {
+  border-left: 3px solid #9af8a2;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+.content li .details p {
+  font-size: 17px;
+}
+.content li .details span {
+  font-size: 15px;
+  color: #7e7e7e;
+  font-weight: 300;
+}
+.synonyms .details .list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.synonyms .details .list span {
+  margin-right: 5px;
+  text-decoration: underline;
+  cursor: pointer;
 }
