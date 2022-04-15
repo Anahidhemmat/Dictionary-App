@@ -5,6 +5,7 @@ const ul = document.querySelector("ul");
 const synonyms = wrapper.querySelector(".synonyms .list");
 let audio = document.createElement("audio");
 const volumeIcon = wrapper.querySelector(".word i");
+const removeIcon = wrapper.querySelector(".search span");
 
 //data function
 function data(result, word) {
@@ -28,7 +29,14 @@ function data(result, word) {
     // audio = new Audio(result[0].phonetics[0].audio);
     // console.log(audio);
     audio.src = result[0].phonetics[2].audio;
-
+    if (result[0].meanings[1].definitions[0].example == undefined) {
+      document.querySelector(
+        ".example span"
+      ).parentElement.parentElement.style.display = "none";
+    } else {
+      document.querySelector(".example span").innerText =
+        result[0].meanings[1].definitions[0].example;
+    }
     if (result[0].meanings[0].synonyms[0] == undefined) {
       synonyms.parentElement.style.display = "none";
     } else {
@@ -42,19 +50,16 @@ function data(result, word) {
         tag.addEventListener("click", () => {
           searchInput.value = tag.innerText;
           fetchApi(tag.innerText);
+          ul.classList.remove("active");
         });
       }
     }
   }
 }
 
-//search synonyms function
-// function search(word) {
-//   searchInput.value = word;
-//   fetchApi(word);
-// }
 // fetch api function
 function fetchApi(word) {
+  ul.classList.remove("active");
   infoText.style.color = "#000";
   infoText.innerHTML = `Searching the meaning of <spa>"${word}"</spa>`;
   let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
@@ -72,4 +77,13 @@ searchInput.addEventListener("keyup", (e) => {
 
 volumeIcon.addEventListener("click", () => {
   audio.play();
+});
+
+removeIcon.addEventListener("click", () => {
+  searchInput.value = "";
+  searchInput.focus();
+  ul.classList.remove("active");
+  infoText.style.color = "#9a9a9a";
+  infoText.innerHTML = `Type a word and press enter to get meaning,example,pronunciation, and
+        synonyms of that typed word.`;
 });
